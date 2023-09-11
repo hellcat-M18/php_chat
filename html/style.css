@@ -1,0 +1,27 @@
+header{
+text-align: center;
+font-size: 3em;
+color: navy;
+}
+.center_text{
+    text-align: center;
+}
+.center_block{
+    margin: auto;
+    text-align: center;
+}
+input{
+    width: 250px;
+    height: 30px;
+    border-color: currentColor;
+}
+.button{
+    width: 350px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: navy;
+}
+.warn{
+    text-align: center;
+    color: red;
+}

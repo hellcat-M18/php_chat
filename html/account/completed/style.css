@@ -1,0 +1,24 @@
+header{
+text-align: center;
+font-size: 3em;
+color: navy;
+}
+.center_text{
+    text-align: center;
+}
+.center_block{
+    margin: auto;
+    text-align: center;
+}
+td.content{
+    width: 250px;
+    height: 30px;
+}
+table{
+    border-color: currentColor;
+}
+tr{
+    border: 5px;
+    border-color: black;
+    height: 30px;
+}

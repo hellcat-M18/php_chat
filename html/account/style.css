@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+}
+.center_block{
+    margin: auto;
+    text-align: center;
+}
+
+input{
+    margin: auto;
+    width: 250px;
+    height: 30px; 
+    border-color: currentColor;
+}
+.button{
+    width: 350px;
+    height: 30px;
+    border-color: navy;
+    border-radius: 5px;
+}
+.warn{
+    text-align: center;
+    color: red;
+}

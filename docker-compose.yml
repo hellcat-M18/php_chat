@@ -1,0 +1,95 @@
+version: '3'
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.19.0.0/16
+
+services:
+
+  #MySQL用コンテナ
+  mysql:
+
+    container_name: mysql
+
+    build: ./mysql
+
+    volumes:
+
+      - ./mysql:/var/lib/mysql
+    platform: linux/x86_64
+
+    ports:
+      - 3310:3306
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=061210
+    
+    networks:
+      default:
+        ipv4_address: 172.19.0.2
+
+  #phpMyAdmin用コンテナ
+
+  phpmyadmin:
+
+    container_name: phpMyAdmin
+
+    depends_on:
+
+      - mysql
+
+    image: phpmyadmin/phpmyadmin
+
+    platform: linux/x86_64
+
+    environment:
+
+      PMA_HOST: mysql
+
+    restart: always
+
+    ports:
+
+      - "80:80"
+
+    networks:
+      default:
+        ipv4_address: 172.19.0.3
+
+  #php用コンテナ
+ 
+
+  php:
+
+    container_name: php-apache
+
+    build: ./php
+
+    volumes:
+
+      - ./html:/var/www/html
+
+    platform: linux/x86_64
+
+    environment:
+      - DB=mysql
+      - USER=phpuser
+      - PORT=3306
+      - HOST=mysql
+      - password=061210
+    
+    networks:
+      default:
+        ipv4_address: 172.19.0.4
+
+    ports:
+
+      - 8080:80
+
+    depends_on:
+
+      - mysql
